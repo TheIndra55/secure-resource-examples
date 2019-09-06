@@ -46,8 +46,25 @@ end)
 AddEventHandler("esx_potjob:delivered", function(id)
     -- only continue if player has already started job
     if sessions[source] and IsLegitLocation(source, id) and not IsClientTooFast(source) then
-        table.insert(sessions[source].visited, id)
-        sessions[source].last = GetGameTimer()
+        local clean = true
+        local distance
+
+        -- do checks if onesync
+        if options.onesync_checks then
+            distance = #(GetEntityCoords(GetPlayerPed(source)) - options.deliveryLocations[id].position)
+
+            -- checking from a distance of 15 because it might not be 100% correct
+            if distance > 15 then
+                clean = false
+            end
+        end
+
+        if clean then
+            table.insert(sessions[source].visited, id)
+            sessions[source].last = GetGameTimer()
+        else
+            print(string.format("%s %s delivered from a too big distance (%s), is they hacking?", GetPlayerName(source), GetPlayerIdentifier(source, 0), math.floor(distance)))
+        end
     end
 end)
 

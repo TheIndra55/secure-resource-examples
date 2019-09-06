@@ -26,5 +26,9 @@ options = {
     -- a legit time in seconds which player shouldn't be able to finish/deliver new location after an action
     -- dont make this too strict like for example when you have houses really close to eachother
     -- if you have a big distance between houses you can really higher this value which prevents attackers calling it every 10 seconds
-    cooldown = 10
+    cooldown = 10,
+
+    -- If you are **not** running onesync disable this, even though you probably should :p
+    -- This allows more serverside checks for example coordinates
+    onesync_checks = true
 }

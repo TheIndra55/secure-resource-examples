@@ -1,4 +1,4 @@
-# Secure Resoruce Examples
+# Secure Resource Examples
 
 This is a bunch of FiveM example resources, they are not meant to have any fancy animations or be advanced they are meant to be an example how to implement your events more secure
 
